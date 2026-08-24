@@ -1,0 +1,11 @@
+# Dependency Tree Baseline
+
+Date: 2026-08-24
+Revision: `378b74f3b8ee32d2abc0de21dbc230bc818b7762`
+
+`cargo tree`, `cargo tree --duplicates`, and `cargo tree --edges normal,build,dev`
+were not available because `cargo` is not installed in the current container.
+
+The workspace contains 81 Cargo manifests in this checkout. Exact resolved
+package and edge counts require `cargo metadata` or `cargo tree` and are recorded
+as `N/A` until the toolchain is installed.

@@ -1,0 +1,6 @@
+# Duplicate Dependency Baseline
+
+`cargo tree --duplicates` could not run because `cargo` is not installed in the
+current container. No duplicate dependency count is fabricated.
+
+Duplicate package count: N/A
