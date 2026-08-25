@@ -21,6 +21,8 @@ fn main() {
         native: { not(target_family = "wasm") },
     }
 
+    println!("cargo:rerun-if-env-changed=CARGO_CFG_TARGET_OS");
+
     if env::var("CARGO_CFG_TARGET_OS").as_deref() == Ok("macos") {
         bindgen_shader_types();
         compile_metal_shaders();
