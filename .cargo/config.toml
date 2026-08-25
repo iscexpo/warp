@@ -21,5 +21,15 @@ rustflags = ["-C", "symbol-mangling-version=v0"]
 [target.'cfg(target_os = "macos")']
 rustflags = ["-C", "link-args=-Wl,-headerpad_max_install_names"]
 
+[build]
+# Memory optimization for 8GB / 2-core runners (e.g., CI, Codespaces):
+# Cargo's default jobs=nproc (2 here) can OOM during parallel rustc on
+# heavy crates (aws-lc-sys, image, warp_core) when combined with linking.
+# Setting jobs=2 caps parallelism to nproc while allowing override via
+# CARGO_BUILD_JOBS=1 for strictly memory-constrained runs. Incremental is
+# enabled by default for dev but documented here for clarity.
+jobs = 2
+incremental = true
+
 [target.'cfg(target_family = "wasm")']
 rustflags = ["--cfg=web_sys_unstable_apis"]

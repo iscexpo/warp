@@ -443,6 +443,15 @@ debug = "line-tables-only"
 # This should work as long as you don't need to move the binary to a different
 # location while retaining the debug information.
 split-debuginfo = "unpacked"
+# Explicitly document incremental and LTO/codegen settings for compile & memory
+# optimization. Incremental reuses prior object files for unchanged crates,
+# reducing wall-time on rebuilds. LTO is disabled for dev to avoid high peak
+# memory during ThinLTO/codegen (previously OOM on CI with full debuginfo).
+# codegen-units=256 maximizes parallelism and minimizes per-unit memory at the
+# cost of slightly less optimization — appropriate for dev iteration speed.
+incremental = true
+lto = false
+codegen-units = 256
 
 [profile.dev.package]
 # Improve the performance of core terminal logic.
