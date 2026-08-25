@@ -3,6 +3,7 @@ use anyhow::{Context as _, Result};
 fn main() -> Result<()> {
     // If this file changes, regenerate the Rust sources.
     println!("cargo:rerun-if-changed=build.rs");
+    println!("cargo:rerun-if-changed=../warp_graphql_schema/api/schema.graphql");
 
     // We need to register the schema here, even though the code is generated in the schema crate.
     cynic_codegen::register_schema("warp-server")

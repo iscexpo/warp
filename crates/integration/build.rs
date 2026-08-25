@@ -2,6 +2,7 @@ use std::path::PathBuf;
 use std::{env, fs};
 
 fn main() {
+    println!("cargo:rerun-if-env-changed=CARGO_TARGET_TMPDIR");
     cargo_target_tmpdir();
 }
 
