@@ -228,6 +228,8 @@ windows-version = "0.1.2"
 tauri-winrt-notification = "0.7.0"
 
 [build-dependencies]
+cfg_aliases.workspace = true
+
+[target.'cfg(target_os = "macos")'.build-dependencies]
 bindgen = "0.70.1"
 cc = { version = "1.0", features = ["parallel"] }
-cfg_aliases.workspace = true
