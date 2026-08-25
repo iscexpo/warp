@@ -452,13 +452,15 @@ tokio = { workspace = true, features = ["rt-multi-thread", "macros", "process", 
 
 [build-dependencies]
 anyhow = "1.0"
-cc = "1.0"
 cfg_aliases.workspace = true
 prost-build.workspace = true
 sha2.workspace = true
 tempfile.workspace = true
 walkdir = "2.3.2"
 warp_util.workspace = true
+
+[target.'cfg(target_os = "macos")'.build-dependencies]
+cc = "1.0"
 
 [target.'cfg(windows)'.build-dependencies]
 embed-resource = "3.0"
