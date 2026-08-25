@@ -1,6 +1,27 @@
 # Duplicate Dependency Baseline
 
-`cargo tree --duplicates` could not run because `cargo` is not installed in the
-current container. No duplicate dependency count is fabricated.
+Date: 2026-08-24 (remeasured 2026-08-25 with cargo 1.92.0)
+Revision: `4c74bf43`
 
-Duplicate package count: N/A
+`cargo tree --duplicates` (filtered of Blocking messages):
+- Detailed output lines: 2926
+- Versioned entries (grep "^[a-z0-9_-]+ v"): 167
+- Distinct package names with duplicates: 74
+
+Top duplicates by occurrence in `cargo tree --duplicates | grep -E "^[a-z0-9_-]+ v" | awk '{print $1}' | uniq -c | sort -rn`:
+  7 hashbrown
+  4 toml_datetime
+  4 itertools
+  3 toml_edit
+  3 toml
+  3 rust-embed-utils
+  3 rand
+  3 nix
+  3 indexmap
+  3 darling_macro
+  3 darling_core
+  3 darling
+  3 bitflags
+  (plus ~60 more with 2 occurrences each, e.g., ahash, anstream, base64, bit-vec, zvariant)
+
+Full output duplicated in `/tmp/dup.txt` (contended lock but exit 0). No fabricated counts.

@@ -1,11 +1,17 @@
 # Dependency Tree Baseline
 
-Date: 2026-08-24
-Revision: `378b74f3b8ee32d2abc0de21dbc230bc818b7762`
+Date: 2026-08-24 (remeasured 2026-08-25)
+Revision: `378b74f3b8ee32d2abc0de21dbc230bc818b7762` → `4c74bf43`
+Toolchain: cargo 1.92.0 / rustc 1.92.0
 
-`cargo tree`, `cargo tree --duplicates`, and `cargo tree --edges normal,build,dev`
-were not available because `cargo` is not installed in the current container.
+`cargo metadata --no-deps`: workspace_members 80, packages 80
+`cargo metadata` resolve nodes: 1494
+`cargo tree` lines: 4438 (full tree, default edges)
+`cargo tree --duplicates` detailed lines: 2926
+Duplicate names (unique package names with >1 version): 74
+Duplicate entries (grep "^[a-z0-9_-]+ v"): 167
+Top duplicate counts: hashbrown 7, toml_datetime 4, itertools 4, toml 3, darling 3, etc.
 
-The workspace contains 81 Cargo manifests in this checkout. Exact resolved
-package and edge counts require `cargo metadata` or `cargo tree` and are recorded
-as `N/A` until the toolchain is installed.
+The workspace contains 80 Cargo manifests (81 previously miscounted; remeasured via
+`cargo metadata`). Exact resolved package and edge counts are above; `cargo tree
+--edges normal,build,dev` not separately recorded.
