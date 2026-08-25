@@ -15305,7 +15305,6 @@ dependencies = [
  "plist",
  "pprof",
  "prost",
- "prost-build",
  "prost-types",
  "qrcode",
  "rand 0.8.6",
