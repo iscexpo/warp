@@ -449,6 +449,10 @@ split-debuginfo = "unpacked"
 # memory during ThinLTO/codegen (previously OOM on CI with full debuginfo).
 # codegen-units=256 maximizes parallelism and minimizes per-unit memory at the
 # cost of slightly less optimization — appropriate for dev iteration speed.
+# overflow-checks disabled for dev to reduce runtime overhead (panic on
+# overflow is still caught in tests via debug-assertions; keep enabled for
+# profile.dev.package overrides if needed).
+overflow-checks = false
 incremental = true
 lto = false
 codegen-units = 256
